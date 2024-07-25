@@ -99,10 +99,17 @@ Console -Hide
 [System.Windows.Forms.Application]::EnableVisualStyles();
 $form = New-Object System.Windows.Forms.Form
 $form.Text = "Device-Affinity-Checker"
-$form.Size = New-Object System.Drawing.Size(800,590)
+$form.ClientSize = New-Object System.Drawing.Size(780,550)
 $form.StartPosition = "CenterScreen"
 $form.MaximizeBox = $false
 $form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedSingle
+$form.KeyPreview = $true
+$form.Add_KeyDown({
+    param($sender, $e)
+    if ($e.KeyCode -eq [System.Windows.Forms.Keys]::F5) {
+        Load-ListViewData
+    }
+})
 
 $listView = New-Object System.Windows.Forms.ListView
 $listView.Size = New-Object System.Drawing.Size(760, 500)
