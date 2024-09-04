@@ -5,6 +5,3 @@ check your interrupt properties very easily
 
 ![image](https://github.com/user-attachments/assets/a29ce79a-3f3a-460e-afb7-0960386b73f3)
 
-# REFERENCIAS
-[1](https://github.com/SheMelody/interrupt-checker/tree/main)
-
