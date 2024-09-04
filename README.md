@@ -5,3 +5,6 @@ check your interrupt properties very easily
 
 ![image](https://github.com/user-attachments/assets/a29ce79a-3f3a-460e-afb7-0960386b73f3)
 
+* Double click to open the device registry key
+* F5 for updating
+
