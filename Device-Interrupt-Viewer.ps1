@@ -203,12 +203,29 @@ $form.Add_KeyDown({
     }
 })
 
+$form.Add_Paint({
+    param (
+        [object]$sender,
+        [System.Windows.Forms.PaintEventArgs]$e
+    )
+    $rect = New-Object System.Drawing.Rectangle(0, 0, $sender.Width, $sender.Height)
+    $brush = New-Object System.Drawing.Drawing2D.LinearGradientBrush(
+        $rect,
+        [System.Drawing.Color]::FromArgb(44, 44, 44),   # Color negro
+        [System.Drawing.Color]::FromArgb(99, 99, 99),# Color gris oscuro
+        [System.Drawing.Drawing2D.LinearGradientMode]::Vertical
+    )
+    $e.Graphics.FillRectangle($brush, $rect)
+})
+
 $listView = New-Object System.Windows.Forms.ListView
 $listView.Size = New-Object System.Drawing.Size(760, 400)
 $listView.Location = New-Object System.Drawing.Point(10, 10)
 $listView.View = [System.Windows.Forms.View]::Details
 $listView.FullRowSelect = $true
 $listView.GridLines = $true
+$listView.BackColor = [System.Drawing.Color]::FromArgb(44, 44, 44)  # Fondo oscuro
+$listView.ForeColor = [System.Drawing.Color]::FromArgb(255, 255, 255)  # Texto blanco
 
 $columnHeader1 = New-Object System.Windows.Forms.ColumnHeader
 $columnHeader1.Text = "Device Description"
@@ -238,9 +255,11 @@ $listView.Add_DoubleClick({
 })
 
 $chkShowAll = New-Object System.Windows.Forms.CheckBox
-$chkShowAll.Text = "Show All Devices"
 $chkShowAll.Size = New-Object System.Drawing.Size(120, 20)
 $chkShowAll.Location = New-Object System.Drawing.Point(10, 415)
+$chkShowAll.Text = "Show All Devices"
+$chkShowAll.ForeColor = [System.Drawing.Color]::White
+$chkShowAll.BackColor = [System.Drawing.Color]::Transparent
 $chkShowAll.Add_CheckedChanged({
     Load-ListViewData | Out-Null
 })
