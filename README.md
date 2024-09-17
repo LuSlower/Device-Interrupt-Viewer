@@ -3,7 +3,7 @@
 
 check your interrupt properties very easily
 
-![image](https://github.com/user-attachments/assets/a29ce79a-3f3a-460e-afb7-0960386b73f3)
+![image](https://github.com/user-attachments/assets/eb8a70b6-349b-4952-8b8f-3e32de61a5fa)
 
 * Double click to open the device registry key
 * F5 for updating
