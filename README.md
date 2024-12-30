@@ -1,5 +1,5 @@
 # Device-Interrupt-Viewer
-[![Total Downloads](https://img.shields.io/github/downloads/LuSlower/Device-Affinity-Checker/total.svg)]
+[![Total Downloads](https://img.shields.io/github/downloads/LuSlower/Device-Interrupt-Viewer/total.svg)](https://github.com/LuSlower/Device-Interrupt-Viewer/releases)
 
 check your interrupt properties very easily
 
