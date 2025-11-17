@@ -1,4 +1,4 @@
-# Check administrator privileges
+
 if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
     Start-Process powershell "-File `"$PSCommandPath`"" -Verb RunAs
     exit
@@ -31,7 +31,7 @@ function Console
     if ($Hide)
     {
         $consolePtr = [Console.Window]::GetConsoleWindow()
-        #0 hide
+        
         $null = [Console.Window]::ShowWindow($consolePtr, 0)
     }
 }
@@ -83,7 +83,7 @@ function Load-ListViewData {
                 $msiPath = "$($instanceKey.PSPath)\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties"
                 $Path = "$($instanceKey.PSPath)\Device Parameters\Interrupt Management\Affinity Policy"
 
-                # Obtener Affinity y Priority
+                
                 $cores = $null
                 $priority = $null
                 $msiSupported = $null
@@ -108,7 +108,7 @@ function Load-ListViewData {
                     $assignmentBytes = $defaultKey.GetValue("AssignmentSetOverride", $null)
                     if ($assignmentBytes -ne $null) {
                         if ($assignmentBytes.Length -eq 4) {
-                            # Convertir el array de bytes a UInt32
+                            
                             $assignment = [BitConverter]::ToUInt32($assignmentBytes, 0)
                             $cores = Get-CoreIndex -CoreMask $assignment
                         }
@@ -185,7 +185,7 @@ function Load-ListViewData {
     $listView.AutoResizeColumns([System.Windows.Forms.ColumnHeaderAutoResizeStyle]::ColumnContent)
 }
 
-# ocultar consola, crear form
+
 Console -Hide
 [System.Windows.Forms.Application]::EnableVisualStyles();
 $form = New-Object System.Windows.Forms.Form
@@ -211,8 +211,8 @@ $form.Add_Paint({
     $rect = New-Object System.Drawing.Rectangle(0, 0, $sender.Width, $sender.Height)
     $brush = New-Object System.Drawing.Drawing2D.LinearGradientBrush(
         $rect,
-        [System.Drawing.Color]::FromArgb(44, 44, 44),   # Color negro
-        [System.Drawing.Color]::FromArgb(99, 99, 99),# Color gris oscuro
+        [System.Drawing.Color]::FromArgb(44, 44, 44),   
+        [System.Drawing.Color]::FromArgb(99, 99, 99),
         [System.Drawing.Drawing2D.LinearGradientMode]::Vertical
     )
     $e.Graphics.FillRectangle($brush, $rect)
@@ -224,8 +224,8 @@ $listView.Location = New-Object System.Drawing.Point(10, 10)
 $listView.View = [System.Windows.Forms.View]::Details
 $listView.FullRowSelect = $true
 $listView.GridLines = $true
-$listView.BackColor = [System.Drawing.Color]::FromArgb(44, 44, 44)  # Fondo oscuro
-$listView.ForeColor = [System.Drawing.Color]::FromArgb(255, 255, 255)  # Texto blanco
+$listView.BackColor = [System.Drawing.Color]::FromArgb(44, 44, 44)  
+$listView.ForeColor = [System.Drawing.Color]::FromArgb(255, 255, 255)  
 
 $columnHeader1 = New-Object System.Windows.Forms.ColumnHeader
 $columnHeader1.Text = "Device Description"
@@ -268,3 +268,4 @@ $form.Controls.Add($chkShowAll)
 Load-ListViewData | Out-Null
 
 [void]$form.ShowDialog()
+
